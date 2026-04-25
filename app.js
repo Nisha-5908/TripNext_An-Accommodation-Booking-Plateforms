@@ -2,7 +2,7 @@ if(process.env.NODE_ENV !== "production") {
 require('dotenv').config({ quiet: true });
 };
 
-
+const Listing = require("./models/listing.js");
 const express = require("express");
 const { default: mongoose } = require("mongoose");
 const app = express();
@@ -72,9 +72,15 @@ const sessionoptions = {
 
 
 // Root route
-app.get("/", (req, res) => {
-  res.send("Hi, I am root");
+// app.get("/", (req, res) => {
+//   res.send("Hi, I am root");
+// });
+
+app.get("/", async (req, res) => {
+  const listings = await Listing.find({});
+  res.render("listings/index", { listings });
 });
+
 
 
 app.use(session(sessionoptions));
