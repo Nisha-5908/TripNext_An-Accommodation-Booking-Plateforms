@@ -2,7 +2,6 @@ if(process.env.NODE_ENV !== "production") {
 require('dotenv').config({ quiet: true });
 };
 
-const Listing = require("./models/listing.js");
 const express = require("express");
 const { default: mongoose } = require("mongoose");
 const app = express();
@@ -26,7 +25,8 @@ const User = require("./models/user.js");
 const listingRoutes = require("./Routes/listing.js");
 const reviewRoutes= require("./Routes/review.js");
 const userRoutes = require("./Routes/user.js");
-  
+const Listing = require("./models/listing.js");
+
 
 main()
   .then(() => {
