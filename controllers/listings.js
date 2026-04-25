@@ -30,12 +30,17 @@ module.exports.showListing = async (req, res) => {
 };
 
 module.exports.createListings = async (req, res, next) => {
-let response = await geocodingClient
-.forwardGeocode({
-  query: req.body.listing.location,
-  limit: 1,
-})
-  .send();
+  let response = await geocodingClient
+    .forwardGeocode({
+      query: req.body.listing.location,
+      limit: 1,
+    })
+    .send();
+
+  if (!response.body.features.length) {
+    req.flash("error", "Location not found. Please enter a valid location.");
+    return res.redirect("/listings/new");
+  }
 //console.log(response.body.features[0].geometry);
 //res.send("done!");   
 
