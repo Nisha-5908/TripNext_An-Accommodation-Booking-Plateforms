@@ -1,0 +1,29 @@
+/Index Route
+//router.get("/", wrapAsync(listingController.index));
+
+ 
+// Show Route
+//router.get("/:id", wrapAsync( listingController.showListing));
+
+// Create Route
+//router.post("/", isLoggedIn, validateListing, wrapAsync( listingController.createListings));
+
+
+// Update Route
+// router.put("/:id",
+//   isLoggedIn,
+//   isOwner,
+//   wrapAsync (listingController.UpdateListings));
+
+// Delete Route
+// router.delete("/:id", isLoggedIn,   isOwner,
+//  wrapAsync (listingController.DestroyListings));
+
+// app.get("/demouser", async (req, res) => {
+//   let fakeUser = new User({
+//     email:"student@gmail.com",
+//     username:"delta-student",
+//   });
+//   let registeredUser = await User.register(fakeUser, "helloworld");
+//   res.send(registeredUser);
+// });
