@@ -76,15 +76,11 @@ const sessionoptions = {
 //   res.send("Hi, I am root");
 // });
 
-app.get("/", async (req, res) => {
-  const listings = await Listing.find({});
-  res.render("listings/index", { listings });
-});
+ 
 
 
 
 app.use(session(sessionoptions));
-
 app.use(flash());
 
 app.use(passport.initialize());
@@ -97,7 +93,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
-  res.locals.currUser = req.user;
+  res.locals.currUser = req.user || null;
 
   console.log(res.locals.success);
    next();
@@ -114,7 +110,10 @@ app.use((req, res, next) => {
 //     next();
 //   }
 // };
-
+app.get("/", async (req, res) => {
+  const listings = await Listing.find({});
+  res.render("listings/index", { listings });
+});
  
 
 
